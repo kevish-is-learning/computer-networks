@@ -1,0 +1,68 @@
+$ curl -v --tls-max 1.2 -o /dev/null https://app.solo.test/api/status 2>&1   (run on Mac 3, client DNS = 10.7.7.5, no -k)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.solo.test:443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.21.121
+*   Trying 10.7.21.121:443...
+* Connected to app.solo.test (10.7.21.121) port 443
+* ALPN: curl offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [225 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [100 bytes data]
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+{ [881 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+{ [300 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+{ [4 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+} [37 bytes data]
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+} [1 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+} [16 bytes data]
+* TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+{ [1 bytes data]
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+{ [16 bytes data]
+* SSL connection using TLSv1.2 / ECDHE-RSA-CHACHA20-POLY1305 / [blank] / UNDEF
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=app.solo.test
+*  start date: Oct  5 16:30:37 2026 GMT
+*  expire date: Nov  6 16:30:37 2027 GMT
+*  subjectAltName: host "app.solo.test" matched cert's "app.solo.test"
+*  issuer: CN=solo Local Root CA
+*  SSL certificate verify ok.
+* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://app.solo.test/api/status
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: app.solo.test]
+* [HTTP/2] [1] [:path: /api/status]
+* [HTTP/2] [1] [user-agent: curl/8.7.1]
+* [HTTP/2] [1] [accept: */*]
+> GET /api/status HTTP/2
+> Host: app.solo.test
+> User-Agent: curl/8.7.1
+> Accept: */*
+>
+* Request completely sent off
+< HTTP/2 200
+< server: nginx/1.31.6
+< date: Mon, 05 Oct 2026 16:51:16 GMT
+< content-type: application/json; charset=utf-8
+< content-length: 63
+< x-powered-by: Express
+< x-backend: A
+< cache-control: no-store
+< etag: W/"3f-d28rWACEw8CdjU+SR0mjvmqSMG8"
+<
+{ [63 bytes data]
+100    63  100    63    0     0     69      0 --:--:-- --:--:-- --:--:--    69
+* Connection #0 to host app.solo.test left intact
+{"backend":"A","status":"ok","time":"2026-10-05T16:51:16.296Z"}

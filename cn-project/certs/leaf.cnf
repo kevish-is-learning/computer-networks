@@ -1,0 +1,10 @@
+[req]
+distinguished_name = dn
+prompt = no
+[dn]
+CN = app.solo.test
+[v3_leaf]
+basicConstraints = critical, CA:FALSE
+keyUsage = critical, digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = DNS:app.solo.test, DNS:api.solo.test
